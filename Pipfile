@@ -12,6 +12,7 @@ twine = "*"
 
 [packages]
 falcon = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"
