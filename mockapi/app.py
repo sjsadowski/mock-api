@@ -1,10 +1,30 @@
 import falcon
 from falcon import HTTPStatus
+import logging
+
 
 class DefaultResource:
-    def on_get(self, req, resp):
-        payload = {'status': '200 OK'}
+    def __init__(self):
+        self.logger = logging.getLogger('mockapi')
 
+    def on_get(self, req, resp):
+        data = req.stream.read(req.content_length or 0)
+        print('REQUEST {} -> {} {} ------------'.format(req.remote_addr, req.method, req.uri))
+        print('Query String: {}'.format(req.query_string)) 
+        print('Cookies: {}'.format(req.cookies)) 
+        print('Data: {}'.format(data)) 
+        print('END REQUEST {} -> {} {} --------'.format(req.remote_addr, req.method, req.uri))
+        payload = {'status': '200 OK'}
+        resp.media = payload
+
+    def on_post(self, req, resp):
+        data = req.stream.read(req.content_length or 0)
+        print('REQUEST {} -> {} {} ------------'.format(req.remote_addr, req.method, req.uri))
+        print('Query String: {}'.format(req.query_string)) 
+        print('Cookies: {}'.format(req.cookies)) 
+        print('Data: {}'.format(data)) 
+        print('END REQUEST {} -> {} {} --------'.format(req.remote_addr, req.method, req.uri))
+        payload = {'status': '200 OK'}
         resp.media = payload
 
 
