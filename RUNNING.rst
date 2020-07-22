@@ -1,8 +1,16 @@
 RUNNING
 =======
 
-gunicorn mockapi.app:api
+keeping it contained:
+``
+$ pipenv install
+$ pipenv run gunicorn mockapi.app:api
+``
 
+If you don't care:
+``
+$ gunicorn mockapi.app:api
+``
 
 
 SECRETS
